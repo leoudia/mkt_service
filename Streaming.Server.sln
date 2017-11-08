@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Streaming.Crystal.Notificat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Difusion.Connection.Test", "Difusion.Connection.Test\Difusion.Connection.Test.csproj", "{F0F8D786-03F1-44FC-960F-97581287CFE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Market.Service.API", "Market.Service.API\Market.Service.API.csproj", "{F9D09467-1192-40DB-8182-1F759D7338A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Market.Service.API", "Market.Service.API\Market.Service.API.csproj", "{F9D09467-1192-40DB-8182-1F759D7338A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Market.Portal", "Market.Portal\Market.Portal.csproj", "{F69C6F64-ED83-4A5E-BB12-00876F0DEE99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F9D09467-1192-40DB-8182-1F759D7338A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9D09467-1192-40DB-8182-1F759D7338A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9D09467-1192-40DB-8182-1F759D7338A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F69C6F64-ED83-4A5E-BB12-00876F0DEE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69C6F64-ED83-4A5E-BB12-00876F0DEE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69C6F64-ED83-4A5E-BB12-00876F0DEE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69C6F64-ED83-4A5E-BB12-00876F0DEE99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
