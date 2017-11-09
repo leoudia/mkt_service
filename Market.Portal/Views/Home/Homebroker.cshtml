@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Homebroker";
+}
+
+<style>
+    @@media (min-width: 330px) {
+        .table {
+            max-width: 370px;
+        }
+    }
+
+    .form-group {
+        max-width: 370px;
+        min-width: 330px;
+    }
+
+    table {
+        border: 1px solid #ddd;
+    }
+
+    .separete-table {
+        border-right: 1px solid #ddd;
+    }
+</style>
+
+<h4>Home Broker</h4>
+
+<div class="container">
+        <div class="form-group">
+            <label for="sel1">Selecione um ativo:</label>
+            <select class="form-control" id="sel_quotes" disable="true" disabled>
+                <option></option>
+                <option>PETR4</option>
+                <option>VALE5</option>
+                <option>BBDC4</option>
+                <option>ITUB3</option>
+            </select>
+        </div>
+        <h4><span id="sp_quote" style="color:chartreuse">-</span></h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Preço</th>
+                    <th class="separete-table">Qtd</th>
+                    <th>Preço</th>
+                    <th>Qtd</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td class="separete-table"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="separete-table"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="separete-table"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="separete-table"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="separete-table"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+@section Scripts {
+    @await Html.PartialAsync("hbscripts")
+}
