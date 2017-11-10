@@ -24,17 +24,20 @@ namespace Market.Portal.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
+        private RoleManager<IdentityRole> _roleManager;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _roleManager = roleManager;
         }
 
         [TempData]
@@ -210,6 +213,37 @@ namespace Market.Portal.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
+        }
+
+        [HttpPost()]
+        [AllowAnonymous]
+        public async Task<bool> RegisterRole([FromBody]UserRole model)
+        {
+            ApplicationUser user = await _userManager.FindByNameAsync(model.Email);
+            
+            if(user != null)
+            {
+                var role = await _roleManager.FindByNameAsync(model.Role);
+
+                if(role == null)
+                {
+                    role = new IdentityRole() { Name = model.Role };
+                    await _roleManager.CreateAsync(role);
+                }
+
+                var userRoles = await _userManager.GetRolesAsync(user);
+
+                if(userRoles == null || !userRoles.Contains(role.Name))
+                {
+                    await _userManager.AddToRoleAsync(user, role.Name);
+                }
+
+                return true;
+            }
+            
+            Response.StatusCode = NotFound().StatusCode;
+
+            return false;
         }
 
         [HttpPost]
