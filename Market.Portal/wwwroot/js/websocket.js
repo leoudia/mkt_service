@@ -64,7 +64,7 @@ function WebsocketHB() {
     var _onError = function(evt) {
         console.log(evt.data);
 
-        this.create_ws();
+        instance.create_ws();
     }
 
     var _doSend = function (message) {

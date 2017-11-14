@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Market.Portal.Data;
 using Market.Portal.Models;
 using Market.Portal.Services;
+using Market.Portal.Repository.Contract;
+using Market.Portal.Controllers;
+using Market.Portal.Repository;
 
 namespace Market.Portal
 {
@@ -35,6 +38,8 @@ namespace Market.Portal
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddTransient<INewsRepository, NewsRepositoryImpl>();
 
             services.AddMvc();
         }

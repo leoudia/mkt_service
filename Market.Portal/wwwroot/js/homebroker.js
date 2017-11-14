@@ -13,4 +13,7 @@ $(document).ready(function () {
     };
 
     ws.create_ws();
+
+    var news = new News();
+    news.load();
 });

@@ -10,6 +10,8 @@ namespace Market.Portal.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<News> News { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -18,9 +20,22 @@ namespace Market.Portal.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+
+            ConfigureNews(builder);
+        }
+
+
+        private void ConfigureNews(ModelBuilder builder)
+        {
+            builder.Entity<News>(entity =>
+            {
+                entity.ToTable("tb_news");
+                entity.HasKey(n => n.Id).HasName("id");
+                entity.Property(n => n.Id).HasColumnName("id").ValueGeneratedOnAdd();
+                entity.Property(n => n.Description).HasColumnName("description").HasMaxLength(200).IsRequired();
+                entity.Property(n => n.Content).HasColumnName("content").HasMaxLength(1000).IsRequired();
+                entity.Property(n => n.DtCreation).HasColumnName("dt_creation").HasDefaultValueSql("getdate()");
+            });
         }
     }
 }
